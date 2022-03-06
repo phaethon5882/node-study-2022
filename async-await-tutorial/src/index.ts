@@ -1,0 +1,1 @@
+import './es8-async-await';
