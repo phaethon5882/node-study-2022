@@ -15,6 +15,7 @@ const friends = [
   },
 ];
 
+<<<<<<< HEAD
 app.use(((req, res, next) => {
   const start = Date.now();
   next();
@@ -26,6 +27,8 @@ app.use(((req, res, next) => {
 // 또한 body 가 없으면 {} 빈 오브젝트를 body 에 심어주기 때문에 body null 체크를 할 필요도 없어졌다.
 app.use(express.json());
 
+=======
+>>>>>>> 898aef7f744555a3f42941c99180d704440646b9
 app.get('/', (req, res) => {
   // express 는 우리가 node 의 http 모듈을 썼던 때와 달리 send 의 타입을 보고 자동으로 Content-Type 헤더를 설정해준다.
   res.send({
@@ -38,6 +41,7 @@ app.get('/friends', (req, res) => {
   res.json(friends);
 });
 
+<<<<<<< HEAD
 app.post('/friends', (req, res) => {
   if (!req.body.name) {
     // return 을 해줘야 56번째 줄 res.json 이 호출되지 않음.
@@ -56,6 +60,8 @@ app.post('/friends', (req, res) => {
   res.json(newFriend);
 });
 
+=======
+>>>>>>> 898aef7f744555a3f42941c99180d704440646b9
 // GET /friends/22
 app.get('/friends/:friendId', (req, res) => {
   const friendId = Number(req.params.friendId);
