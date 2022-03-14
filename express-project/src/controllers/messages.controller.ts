@@ -1,7 +1,10 @@
 import {Request, Response} from "express";
 
 function getMessages(req: Request, res: Response) {
-  res.send('<ul><li>Hello Yunki</li></ul>');
+  res.render('messages', {
+    title: 'Messages to my Friends!',
+    friend: 'Yunki Baek',
+  });
 }
 
 function postMessage(req: Request, res: Response) {
