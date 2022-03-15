@@ -11,7 +11,7 @@ function isHabitablePlanet(planet: IPlanet) {
     && Number(planet['koi_prad']) < 1.6;
 }
 
-export function loadPlanetsData(): Promise<void> {
+function loadPlanetsData(): Promise<void> {
   return new Promise((resolve, reject) => {
     fs.createReadStream(path.resolve(__dirname, '../../data/kepler_data.csv'))
       .pipe(parse({
@@ -34,4 +34,11 @@ export function loadPlanetsData(): Promise<void> {
   });
 }
 
-export default habitablePlanets;
+function getAllPlanets() {
+  return habitablePlanets;
+}
+
+export {
+  loadPlanetsData,
+  getAllPlanets,
+};
