@@ -1,5 +1,3 @@
-import {Document} from "mongoose";
-
-export default interface Planet extends Document {
+export default interface Planet {
   keplerName: string;
 }
