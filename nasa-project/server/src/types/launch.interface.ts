@@ -1,10 +1,12 @@
-export default interface ILaunch {
+import type Planet from "./planet.interface";
+
+export default interface Launch {
   flightNumber: number;
   mission: string;
   rocket: string;
   launchDate: Date;
-  target: string,
-  customer: string[],
+  target: Planet['_id'],
+  customers: string[],
   upcoming: boolean,
   success: boolean;
 }

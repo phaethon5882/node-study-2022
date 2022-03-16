@@ -1,13 +1,13 @@
 import {Request, Response} from "express";
 import {addLaunch, getAllLaunches, abortLaunchById, existsLaunchWithId} from "../../models/launches.model";
-import ILaunch from "../../types/launch.interface";
+import type Launch from "../../types/launch.interface";
 
-function httpGetAllLaunches(req: Request, res: Response) {
-  return res.status(200).json(getAllLaunches());
+async function httpGetAllLaunches(req: Request, res: Response) {
+  return res.status(200).json(await getAllLaunches());
 }
 
 function httpAddNewLaunch(req: Request, res: Response) {
-  const launch = req.body as ILaunch;
+  const launch = req.body as Launch;
 
   if (!launch.mission || !launch.rocket || !launch.target || !launch.launchDate) {
     return res.status(400).json({
