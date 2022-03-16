@@ -7,7 +7,10 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "watch": "nodemon -e ts src/server.ts",
-    "start": "ts-node src/server.ts"
+    "build": "tsc",
+    "start": "rimraf dist && npm run build && node dist/server.js",
+    "cluster": "rimraf dist && npm run build && pm2 start dist/server.js -i max",
+    "delete-cluster": "pm2 delete server"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +33,7 @@
     "cors": "^2.8.5",
     "csv-parse": "^5.0.4",
     "express": "^4.17.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pm2": "^5.2.0"
   }
 }
