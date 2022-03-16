@@ -1,6 +1,4 @@
 import express from 'express';
-import cluster from 'cluster';
-import os from 'os';
 
 const app = express();
 
@@ -21,19 +19,9 @@ app.get('/timer', (req, res) => {
   res.send(`Ding ding ding! ${process.pid}`);
 });
 
-
+// pm2 를 쓰면 마스터 프로세스를 자동으로 생성해주고 워커 프로세스들이 -i 옵션으로 준만큼 생성된다.
+// pm2 start src/server.ts -i max -> 16개 워커 프로세스 생성됨!
 console.log('Running server.js...');
-if (cluster.isPrimary) {
-  // 워커가 16개 돌아가니까 동시에 16개 처리를 할 수 있음.
-  // 논리 프로세서 개수, 나의 경우는 16(8 * 2)개
-  const NUM_WORKERS = os.cpus().length;
-
-  console.log('Master has been started...');
-  for (let i = 0; i < NUM_WORKERS; i++) {
-    cluster.fork();
-  }
-} else {
-  console.log('Worker process started...');
-  app.listen(3000);
-}
+console.log('Worker process started...');
+app.listen(3000);
 
