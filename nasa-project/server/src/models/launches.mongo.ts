@@ -2,7 +2,7 @@ import {model, Schema} from "mongoose";
 import type Launch from "../types/launch.interface";
 import planetsModel from "./planets.mongo";
 
-const launchesSchema = new Schema({
+const launchesSchema = new Schema<Launch>({
   flightNumber: {
     type: Number,
     required: true,
@@ -36,6 +36,6 @@ const launchesSchema = new Schema({
 });
 
 // connecting launchesSchema to launch collection
-const launchesModel = model<Launch>('Launch', launchesSchema);
+const launchesModel = model('Launch', launchesSchema);
 
 export default launchesModel;
